@@ -1,4 +1,4 @@
-var times;
+var friends;
 let table;
 
 function preload(){
@@ -13,29 +13,25 @@ function setup(){
 
 function draw(){
     background(0);
-    
-    for (var i = 0; i < times.length; i++) {
-        times[i].display();
-    }
+    angleMode(RADIANS);
 
-    fill("blue");
-    textSize(20);
-    text('What is on your mind, Tae?', 320, 200);
+    for (var i = 0; i < friends.length; i++) {
+        friends[i].display();
+    }
 }
 
 function loadData(){
 
-    times = [];
+    friends = [];
 
     for(var i = 0; i < table.getRowCount(); i++){
         var row = table.getRow(i);
         var x = row.get("x");
-        var y = row.get("y");
         var x2 = row.get("x2");
         var y2 = row.get("y2");
         var n = row.get("name");
 
-    times[i] = new Time(x, y, x2, y2, n);
+    friends[i] = new Friend(x, x2, y2, n);
 
     }
 }
